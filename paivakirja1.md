@@ -9,7 +9,9 @@ Erityisen opettavaista oli harjoitella muutosten perumista eri tasoilla:
 - `git restore` palauttaa seurannassa olevan tiedoston viimeisimmän commitin mukaiseksi, mutta ei vaikuta lainkaan seuraamattomiin (*untracked*) tiedostoihin. Niiden siivoamiseen tarvittiin `git clean -fd`.
 - `git revert` kumoaa aiemman commitin turvallisesti luomalla uuden vastakkaisen talletuksen ilman historiatiedon katoamista.
 
-Esteiden selvittämisessä auttoi erityisesti `git status` -komennon säännöllinen ajaminen jokaisen vaiheen jälkeen sekä Gitin omat vinkit ja selkeät virheilmoitukset.
+Ominaisuushaaran (`tyylit`) tekeminen ja haarojen välillä hyppiminen (`git switch`) konkretisoi selaimessa selvästi sen, miten työtila mukautuu aktiivisen haaran tilaan. Yhdistäminen `--no-ff`-lipulla teki historiasta havainnollisen, jolloin erillinen merge-commit jätti haaran kehityskaaren selkeästi näkyviin graafiin.
+
+Esteiden selvittämisessä auttoi erityisesti `git status`- ja `git log --graph` -komentojen säännöllinen ajaminen jokaisen vaiheen jälkeen sekä Gitin omat vinkit ja selkeät virheilmoitukset.
 
 ## Osiossa käyttämäni Git-komennot
 
@@ -27,7 +29,10 @@ Esteiden selvittämisessä auttoi erityisesti `git status` -komennon säännöll
 | `git revert HEAD` | Kumoaa viimeisimmän commitin luomalla uuden talletuksen, joka tekee päinvastaiset muutokset historiaa pyyhkimättä |
 | `git log` | Näyttää talletushistorian (commit-tunnisteet, tekijän, päivämäärän ja viestit) |
 | `git log --stat` | Näyttää commit-historian lisäksi yhteenvedon muuttuneista tiedostoista ja muokattujen rivien määrästä |
-| `git log --oneline` | Tiivistää talletushistorian yhteen riviin per commit |
+| `git log --oneline --graph` | Tiivistää talletushistorian yhteen riviin ja piirtää haarojen rakenteen tekstigraafina |
 | `git tag <nimi>` | Luo nimilapun eli tagin valittuun (tai aktiiviseen) commitiin version merkitsemiseksi |
 | `git clone <osoite>` | Kloonaa etärepositorion paikalliselle koneelle |
-| `git switch <haara>` | Vaihtaa aktiivista haaraa (esim. `paivakirja1`) |
+| `git branch` | Listaa paikalliset haarat ja osoittaa aktiivisen haaran tähdellä |
+| `git switch <haara>` | Vaihtaa aktiivista haaraa olemassa olevaan haaraan |
+| `git switch -c <haara>` | Luo uuden haaran ja siirtyy siihen välittömästi |
+| `git merge --no-ff <haara>` | Yhdistää annetun haaran aktiiviseen haaraan luomalla aina uuden merge-commitin |
